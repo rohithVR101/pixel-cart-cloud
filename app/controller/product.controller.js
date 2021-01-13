@@ -56,9 +56,10 @@ exports.findOne = (req, res) => {
   const product_code = req.params.id;
   var condition = product_code ? { product_code: { [Op.like]: `%${product_code}%` } } : null;
 
-  Product.findAll({ where: condition })
+  Product.findOne({ where: condition })
     .then(data => {
       res.send(data);
+      // return data;
     })
     .catch(err => {
       res.status(500).send({

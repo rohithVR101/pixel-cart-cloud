@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Cart = sequelize.define("cart", {
+      Cart_Session_ID:{
+        type: Sequelize.INTEGER
+      },
       Product_ID: {
         type: Sequelize.INTEGER
       },
@@ -11,9 +14,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       Price:{
         type: Sequelize.FLOAT
-      },
-      Cart_Session_ID:{
-        type: Sequelize.INTEGER
       }
     });
   

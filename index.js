@@ -7,12 +7,12 @@ const exphbs = require('express-handlebars')
 const app=express();
 
 var corsOptions = {
-  origin:"http://localhost:3000"
+  origin:"http://localhost:4200"
 };
 
 app.use(cors(corsOptions)); 
 
-app.use(bodyparser.json());
+app.use(bodyparser.json());``
 app.use(bodyparser.urlencoded({extended: true}));
 
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
@@ -20,15 +20,39 @@ app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.set('views', './app/views')
-app.engine('hbs', exphbs({
-    extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
+//  app.use(function (req, res, next) {
+//    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 
- 
+//    // Request methods you wish to allow
+//    res.setHeader(
+//      "Access-Control-Allow-Methods",
+//      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+//    );
+
+//    // Request headers you wish to allow
+//    res.setHeader(
+//      "Access-Control-Allow-Headers",
+//      "Origin,X-Requested-With,content-type,Accept"
+//    );
+
+//    // Set to true if you need the website to include cookies in the requests sent
+//    // to the API (e.g. in case you use sessions)
+//    res.setHeader("Access-Control-Allow-Credentials", true);
+
+//    // Pass to next layer of middleware
+//    next();
+//  });
 
 
+
+app.set("views", "./app/views");
+app.engine(
+  "hbs",
+  exphbs({
+    extname: ".hbs",
+  })
+);
+app.set("view engine", ".hbs");
 
 const db = require("./app/models");
 // require('./app/config/passport/passport.js')(passport, db.user);
