@@ -1,26 +1,26 @@
 module.exports = (sequelize, Sequelize) => {
     const Order = sequelize.define("order", {
-      Order_ID: {
-        type: Sequelize.INTEGER
+      Cart_Session_ID: {
+        type: Sequelize.INTEGER,
       },
       Customer_Phone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING,
       },
-      Order_Timestamp: {
-        type: Sequelize.STRING
-      },
-      Product_Code: {
-        type: Sequelize.INTEGER
+      Product_ID: {
+        type: Sequelize.INTEGER,
       },
       Product_Name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       Quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      Pricey: {
-        type: Sequelize.FLOAT
-      }
+      Rate: {
+        type: Sequelize.FLOAT,
+      },
+      Amount: {
+        type: Sequelize.FLOAT,
+      },
     });
   
     return Order;

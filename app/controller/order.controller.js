@@ -5,21 +5,20 @@ const Op = db.Sequelize.Op;
 // Create and Save a new 
 exports.create = (req, res) => {
 
-    if (!req.body.Order_ID) {
-        res.status(400).send({
-          message: "Order ID cannot be empty!"
-        });
-        return;
-      }
+    // if (!req.body.Order_ID) {
+    //     res.status(400).send({
+    //       message: "Order ID cannot be empty!"
+    //     });
+    //     return;
+    //   }
      
       const order = {
-        Order_ID: req.body.Order_ID,
         Customer_Phone: req.body.Customer_Phone,
-        Order_Timestamp: req.body.Order_Timestamp,
         Product_Code: req.body.Product_Code,
         Product_Name: req.body.Product_Name,
         Quantity: req.body.Quantity,
-        Pricey: req.body.Pricey,
+        Rate: req.body.Rate,
+        Amount: req.body.Amount,
       };
       
       Order.create(order)
