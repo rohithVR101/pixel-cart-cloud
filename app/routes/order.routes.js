@@ -12,8 +12,8 @@ module.exports = app => {
     // // Retrieve all published products
     // router.get("/published", products.findAllPublished);
   
-    // // Retrieve a single order with id
-    //  router.get("/:id", orders.findOne);
+    // Retrieve a single order with bill number
+     router.get("/bill/:id", orders.findOne);
   
     // // Update a order with id
      router.put("/update/:id", orders.update);
