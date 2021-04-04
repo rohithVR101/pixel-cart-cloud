@@ -8,7 +8,7 @@ exports.process = (req, res) => {
     currency = "INR",
     receipt = req.body.order_id,
     payment_capture = true,
-    notes = "Online transcation for Pixel Cart";
+    notes = "Online transcation for SIET Cart";
   let payment_id;
 
   instance.orders
