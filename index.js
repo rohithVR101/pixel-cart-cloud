@@ -25,7 +25,7 @@ const db = require("./app/models");
 db.sequelize.sync();
 
 app.get("/", function (req, res) {
-  res.send("Server is running.");
+  res.sendFile(__dirname + "/app/index.html");
 });
 
 require("./app/routes/product.routes.js")(app);
