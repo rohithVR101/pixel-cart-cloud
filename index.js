@@ -5,7 +5,7 @@ const session = require("express-session");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:4200",
+  origin: "https://pixel-cart.web.app",
 };
 
 app.use(cors(corsOptions));

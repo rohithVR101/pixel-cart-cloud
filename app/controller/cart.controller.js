@@ -256,10 +256,9 @@ exports.clear = (req, res) => {
       data.map((r) => {
         Cart.destroy({
           where: { Cart_Session_ID: r.dataValues.Current_ID },
-        })
-          .then(() => {
-            res.send("Cart emptied.");
-          });
+        }).then(() => {
+          res.send("Cart emptied.");
+        });
       });
     })
     .catch((err) => {

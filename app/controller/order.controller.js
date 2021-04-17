@@ -12,8 +12,6 @@ exports.create = (req, res) => {
   //     return;
   //   }
 
-  
-
   CartSession.findAll({
     attributes: ["Current_ID"],
   })
@@ -36,8 +34,8 @@ exports.create = (req, res) => {
           CGST: req.body.CGST,
           SGST: req.body.SGST,
           Discount: req.body.Discount,
-          Sub_Total: req.body.Sub_Total
-        }; 
+          Sub_Total: req.body.Sub_Total,
+        };
         Order.create(order)
           .then((data) => {
             res.send(data);
@@ -152,6 +150,29 @@ exports.delete = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: "Could not delete order with id=" + id,
+      });
+    });
+};
+
+// Delete a order with the specified id in the request
+exports.deleteAll = (req, res) => {
+  CartSession.findAll({
+    attributes: ["Current_ID"],
+  })
+    .then((data) => {
+      data.map((r) => {
+        Order.destroy({
+          where: { Cart_Session_ID: r.dataValues.Current_ID },
+        }).then(() => {
+          res.send("Orders cleared.");
+        });
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while retrieving current session id.",
       });
     });
 };

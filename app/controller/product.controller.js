@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving products.",
       });
     });
 };
@@ -65,7 +65,7 @@ exports.findOne = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving products.",
       });
     });
 };
@@ -84,7 +84,7 @@ exports.findOne = (req, res) => {
 //     });
 // };
 
-// Update a Tutorial by the id in the request
+// Update a product by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 

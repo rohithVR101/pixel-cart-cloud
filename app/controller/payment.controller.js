@@ -1,4 +1,5 @@
 exports.process = (req, res) => {
+  console.log(req);
   var Razorpay = require("razorpay");
   var instance = new Razorpay({
     key_id: process.env.PAYMENT_KEY_ID,
@@ -7,22 +8,24 @@ exports.process = (req, res) => {
   var amount = req.body.amount,
     currency = "INR",
     receipt = req.body.order_id,
-    payment_capture = true,
-    notes = "Online transcation for SIET Cart";
-  let payment_id;
+    payment_capture = true;
+  let order_id;
 
   instance.orders
-    .create({ amount, currency, receipt, payment_capture, notes })
+    .create({ amount, currency, receipt, payment_capture })
     .then((response) => {
       console.log("**********Order Created***********");
       console.log(response);
       console.log("**********Order Created***********");
       order_id = response.id;
+      console.log(response);
+      res.send(order_id);
     })
     .catch((error) => {
       console.log(error);
     });
-
+};
+exports.payment = (req, res) => {
   payment_id = req.body;
   console.log("**********Payment authorized***********");
   console.log(payment_id);
