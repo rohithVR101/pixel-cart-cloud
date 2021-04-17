@@ -12,7 +12,7 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
+app.use("/favicon.ico", express.static("public/images/favicon.ico"));
 
 app.use(
   session({
